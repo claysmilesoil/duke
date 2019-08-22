@@ -11,7 +11,12 @@ public class Task {
         return (isDone ? "[\u2713] " : "[\u2718] " ); // check mark or x
     }
 
+    @Override
+    public String toString() {
+        return (this.statusIcon() + this.description);
+    }
+
     public void markAsDone() {
-        isDone = true;
+        this.isDone = true;
     }
 }
