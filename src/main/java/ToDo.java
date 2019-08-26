@@ -6,4 +6,13 @@ public class ToDo extends Task{
     public String toString() {
         return ("[T]" + super.toString());
     }
+
+    public static void addToDo(String input) {
+            if (input.substring(4).isBlank()) {
+                System.out.println("Uh, the description of a todo cannot be empty.");
+            } else {
+                itemList[Task.numberOfTasks] = new ToDo(input.substring(5).trim());
+                addTask();
+            }
+    }
 }
