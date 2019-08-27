@@ -25,7 +25,8 @@ public class Task {
     }
 
     public static void addTask() {
-        System.out.println("Got it, I've added this task:\n   " + Task.itemList[Task.numberOfTasks - 1] + "\nNow you have "
+        Memory.writeToFile(itemList[numberOfTasks - 1]);
+        System.out.println("Got it, I've added this task:\n   " + itemList[Task.numberOfTasks - 1] + "\nNow you have "
                 + Task.numberOfTasks + " task(s) in the list.");
     }
 
@@ -45,5 +46,22 @@ public class Task {
         } catch (StringIndexOutOfBoundsException | NumberFormatException e){
             System.out.println("Specify the number corresponding to the task on the list.");
         }
+    }
+
+    public static void addFromFile(String line) throws Exception {
+        switch(line.charAt(0)){
+            case ('T'):
+                itemList[numberOfTasks] = new ToDo(line.substring(4));
+                break;
+            case ('D'):
+                itemList[numberOfTasks] = new Deadline(line.substring(4,line.indexOf(">")), line.substring(line.indexOf(">")+ 1));
+                break;
+            case ('E'):
+                itemList[numberOfTasks] = new Event(line.substring(4,line.indexOf(">")), line.substring(line.indexOf(">") + 1));
+                break;
+            default:
+                throw new Exception();
+        }
+        Task.itemList[numberOfTasks - 1].isDone = (line.charAt(2) == 'y');
     }
 }

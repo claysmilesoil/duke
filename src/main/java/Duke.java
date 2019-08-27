@@ -1,23 +1,26 @@
 import java.util.Scanner;
 public class Duke {
-    public static void main(String[] args) {
-        // formatting
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        String line = "____________________________________________\n";
+    // startup
+    protected static String logo = " ____        _        \n"
+            + "|  _ \\ _   _| | _____ \n"
+            + "| | | | | | | |/ / _ \\\n"
+            + "| |_| | |_| |   <  __/\n"
+            + "|____/ \\__,_|_|\\_\\___|\n";
+    protected static String line = "____________________________________________\n";
+    protected static Scanner inp = new Scanner(System.in);
 
+    public Duke () {
         // Greeting
         System.out.println("Hello from\n" + logo);
         System.out.print(line + "Hello, I'm Duke!\nWhat can I do for you?\n" + line);
+        // load list from List.txt
+        Memory.readListFromFile();
+    }
+    public static void main(String[] args) {
 
-        // first input
-        Scanner inp = new Scanner(System.in);
+        Duke duke = new Duke();
+
         String input = inp.nextLine();
-
-        // input handling
         while (!input.equals("bye")) {
             System.out.print(line);
             if (input.equals("list")) {
@@ -49,7 +52,7 @@ public class Duke {
                         "    4. done [number]                -- Mark the corresponding task on the list as completed\n" +
                         "    5. list                         -- Display list of tasks\n" +
                         "    6. help                         -- Bring up this manual\n" +
-                        "    7. bye                          -- Close the program. The list will be deleted.");
+                        "    7. bye                          -- Close the program. ");
             } else {
                 // filter out gibberish
                 System.out.println("Uh, dunno what that means. Type \"help\" for the list of commands available.");
@@ -57,7 +60,6 @@ public class Duke {
             System.out.println(line);
             input = inp.nextLine();
         }
-
         System.out.print(line + "Bye, see you soon!\n" + line);
     }
 }
