@@ -10,10 +10,10 @@ public class Memory{
                 fw.write("T|" + done + "|" + ((ToDo)v).description + "\n");
             }
             else if (v instanceof Deadline) {
-                fw.write("D|"+ done + "|" + ((Deadline)v).description + ">" + ((Deadline)v).date + "\n");
+                fw.write("D|"+ done + "|" + ((Deadline)v).description + ">" + ((Deadline)v).dateBackup + "\n");
             }
             else if (v instanceof Event) {
-                fw.write("E|"+ done + "|" + ((Event)v).description + ">" + ((Event)v).date + "\n");
+                fw.write("E|"+ done + "|" + ((Event)v).description + ">" + ((Event)v).dateBackup + "\n");
             }
 
             fw.close();

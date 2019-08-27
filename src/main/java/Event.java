@@ -1,8 +1,17 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class Event extends Task {
-    protected String date;
+    protected Date date;
+    protected String dateBackup;
     public Event(String description, String date) {
         super(description);
-        this.date = date;
+        this.dateBackup = date;
+        try {
+            this.date = new SimpleDateFormat("dd/MM/yyyy kkmm").parse(date);
+        } catch (ParseException e) {
+            System.out.println("Date or time format is invalid.");
+        }
     }
 
     @Override
