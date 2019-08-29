@@ -26,7 +26,6 @@ public class Task {
     } // TODO: find and change in file
 
     public static void addTask() {
-        Memory.writeToFile(itemList.get(itemList.size() - 1));
         System.out.println("Got it, I've added this task:\n   " + itemList.get(itemList.size() - 1) + "\nNow you have "
                 + itemList.size() + " task(s) in the list.");
     }

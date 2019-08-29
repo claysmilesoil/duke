@@ -60,6 +60,7 @@ public class Duke {
             System.out.println(line);
             input = inp.nextLine();
         }
+        Memory.writeListToFile();
         System.out.print(line + "Bye, see you soon!\n" + line);
     }
 }

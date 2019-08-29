@@ -1,26 +1,26 @@
 import java.io.*;
 public class Memory{
-    public static void writeToFile(Task v) {
+    public static void writeListToFile() {
         try {
             File f = new File("data");
             f.mkdir(); // create directory if it doesn't exist
-            FileWriter fw = new FileWriter("data/List.txt", true);
-            String done = v.isDone? "y" : "n";
-            if (v instanceof ToDo){
-                fw.write("T|" + done + "|" + ((ToDo)v).description + "\n");
-            }
-            else if (v instanceof Deadline) {
-                fw.write("D|"+ done + "|" + ((Deadline)v).description + ">" + ((Deadline)v).dateBackup + "\n");
-            }
-            else if (v instanceof Event) {
-                fw.write("E|"+ done + "|" + ((Event)v).description + ">" + ((Event)v).dateBackup + "\n");
-            }
+            File file = new File ("data/List.txt");
+            file.delete(); // deletes old file
+            FileWriter fw = new FileWriter("data/List.txt");
 
+            for (Task v : Task.itemList) {
+                String done = v.isDone ? "y" : "n";
+                if (v instanceof ToDo) {
+                    fw.write("T|" + done + "|" + ((ToDo) v).description + "\n");
+                } else if (v instanceof Deadline) {
+                    fw.write("D|" + done + "|" + ((Deadline) v).description + ">" + ((Deadline) v).dateBackup + "\n");
+                } else if (v instanceof Event) {
+                    fw.write("E|" + done + "|" + ((Event) v).description + ">" + ((Event) v).dateBackup + "\n");
+                }
+            }
             fw.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (NullPointerException e) {
-            System.out.println("Caught NPE, file not saved.");
+        } catch (IOException | NullPointerException e) {
+            System.out.println(e.getMessage() + ". File may not be saved properly.");
         }
     }
 
