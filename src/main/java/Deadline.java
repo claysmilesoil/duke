@@ -4,14 +4,10 @@ import java.text.SimpleDateFormat;
 public class Deadline extends Task{
     protected Date date;
     protected String dateBackup;
-    public Deadline(String description, String date){
+    public Deadline(String description, String date) throws ParseException {
         super(description);
         this.dateBackup = date;
-        try {
-            this.date = new SimpleDateFormat("dd/MM/yyyy kkmm").parse(date);
-        } catch (ParseException e) {
-            System.out.println("Date or time format is invalid.");
-        }
+        this.date = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(date);
     }
     @Override
     public String toString() {
@@ -26,8 +22,12 @@ public class Deadline extends Task{
             } else if (input.substring(8,dateIdx).isBlank()) {
                     System.out.println("Uh, the description of a deadline cannot be empty.");
             } else {
-                    Task.itemList[Task.numberOfTasks] = new Deadline(input.substring(9, dateIdx).trim(), input.substring(dateIdx + 4).trim());
+                try {
+                    Task.itemList.add(new Deadline(input.substring(9, dateIdx).trim(), input.substring(dateIdx + 4).trim()));
                     addTask();
+                } catch (ParseException e) {
+                    System.out.println("Date and time format is invalid. (valid: dd/MM/yyyy HHmm)");
+                }
             }
         } catch (StringIndexOutOfBoundsException e) {
             System.out.println("Specify a date or time after the keyword /by.");

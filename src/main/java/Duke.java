@@ -1,16 +1,16 @@
 import java.util.Scanner;
 public class Duke {
-    // startup
-    protected static String logo = " ____        _        \n"
-            + "|  _ \\ _   _| | _____ \n"
-            + "| | | | | | | |/ / _ \\\n"
-            + "| |_| | |_| |   <  __/\n"
-            + "|____/ \\__,_|_|\\_\\___|\n";
-    protected static String line = "____________________________________________\n";
-    protected static Scanner inp = new Scanner(System.in);
+    private static String line = "____________________________________________\n";
+    private static Scanner inp = new Scanner(System.in);
 
-    public Duke () {
+    private Duke() {
         // Greeting
+        // startup
+        String logo = " ____        _        \n"
+                + "|  _ \\ _   _| | _____ \n"
+                + "| | | | | | | |/ / _ \\\n"
+                + "| |_| | |_| |   <  __/\n"
+                + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
         System.out.print(line + "Hello, I'm Duke!\nWhat can I do for you?\n" + line);
         // load list from List.txt
@@ -25,12 +25,12 @@ public class Duke {
             System.out.print(line);
             if (input.equals("list")) {
                 // lists all tasks
-                if (Task.numberOfTasks == 0) {
+                if (Task.itemList.isEmpty()) {
                     System.out.println("You have no tasks in your list.");
                 } else {
                     System.out.println("Here are the tasks in your list:");
-                    for (int i = 0; i < Task.numberOfTasks; i++) {
-                        System.out.println(i + 1 + ". " + Task.itemList[i]);
+                    for (int i = 0; i < Task.itemList.size(); i++) {
+                        System.out.println(i + 1 + ". " + Task.itemList.get(i));
                     }
                 }
             } else if (input.indexOf("done") == 0){
