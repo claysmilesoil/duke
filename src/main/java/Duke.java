@@ -18,7 +18,7 @@ public class Duke {
     }
     public static void main(String[] args) {
 
-        Duke duke = new Duke();
+        new Duke();
 
         String input = inp.nextLine();
         while (!input.equals("bye")) {
@@ -33,7 +33,7 @@ public class Duke {
                         System.out.println(i + 1 + ". " + Task.itemList.get(i));
                     }
                 }
-            } else if (input.indexOf("done") == 0){
+            } else if (input.indexOf("done") == 0) {
                 // mark a task as completed
                 Task.doneTask(input);
             } else if (input.indexOf("todo") == 0){
@@ -44,12 +44,15 @@ public class Duke {
                 Deadline.addDeadline(input);
             } else if (input.indexOf("event") == 0) {
                 Event.addEvent(input);
+            } else if (input.indexOf("delete") == 0) {
+                Task.deleteTask(input);
             } else if (input.equals("help")){
                 System.out.println("Here are the currently available commands:\n" +
                         "    1. todo [field]                 -- Add a todo task to the list\n" +
                         "    2. deadline [field] /by [time]  -- Add a deadline task to the list\n" +
                         "    3. event [field] /at [time]     -- Add an event to the list\n" +
-                        "    4. done [number]                -- Mark the corresponding task on the list as completed\n" +
+                        "    4. done [number]                -- Mark corresponding task on the list as completed\n" +
+                        "    5. delete [number]              -- Delete corresponding task on the list\n" +
                         "    5. list                         -- Display list of tasks\n" +
                         "    6. help                         -- Bring up this manual\n" +
                         "    7. bye                          -- Close the program. ");

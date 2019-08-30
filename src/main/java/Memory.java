@@ -1,4 +1,5 @@
 import java.io.*;
+
 public class Memory{
     public static void writeListToFile() {
         try {
@@ -33,9 +34,7 @@ public class Memory{
                 line = r.readLine();
             }
         } catch (IOException e) {
-            File f = new File ("data/List.txt");
-        } catch (Exception e) {
-            System.out.println("Error reading from file; file data may be corrupted.");
+            File f = new File("data/List.txt");
         }
     }
 }
