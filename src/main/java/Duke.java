@@ -33,6 +33,8 @@ public class Duke {
                         System.out.println(i + 1 + ". " + Task.itemList.get(i));
                     }
                 }
+            }else if (input.indexOf("find") == 0) {
+                Task.findTask(input);
             } else if (input.indexOf("done") == 0){
                 // mark a task as completed
                 Task.doneTask(input);
