@@ -1,0 +1,9 @@
+todo buy study notebooks
+todo tidy study table
+event xxx presentation /at 16/9/2019 1400
+deadline xxx homework /by 8/9/2019 0000
+find study
+done 3
+done 1
+delete 1
+bye
