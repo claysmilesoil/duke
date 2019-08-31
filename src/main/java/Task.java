@@ -64,6 +64,22 @@ public abstract class Task { // abstract?
         }
     }
 
+    public static void findTask(String input) {
+        if (itemList.isEmpty()) {
+            System.out.println("You have no tasks in your list.");
+        } else {
+            String keyword = input.substring(4).trim();
+            ArrayList<Task> queryList = new ArrayList<Task>(100);
+            for (Task v : itemList) {
+                if (v.description.contains(keyword)) queryList.add(v);
+            }
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < queryList.size(); i++) {
+                System.out.println(i + 1 + ". " + queryList.get(i));
+            }
+        }
+    }
+
     public static void addFromFile(String line) {
         try {
             switch(line.charAt(0)){
