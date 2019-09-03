@@ -10,7 +10,6 @@ public abstract class Task { // abstract?
     public Task (String description) {
         this.description = description;
         this.isDone = false;
-        //numberOfTasks++;
     }
 
     public String statusIcon() {
