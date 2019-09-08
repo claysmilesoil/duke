@@ -4,7 +4,8 @@ public class Command {
     private boolean exit;
 
     public enum CommandType {
-        listCommand, exitCommand, helpCommand, addTodo, addDeadline, addEvent, deleteCommand, doneCommand, findCommand, invalidInput
+        LIST, EXIT, HELP, TODO, DEADLINE, EVENT, DELETE,
+        DONE, FIND, INVALID
     }
 
     public Command(CommandType command) {
@@ -18,27 +19,38 @@ public class Command {
     }
 
     public void execute (Ui ui) {
-        if (this.command == CommandType.listCommand) {
-            ui.getList();
-        } else if (this.command == CommandType.exitCommand) {
-            this.exit = true;
-            ui.goodbye();
-        } else if (this.command == CommandType.helpCommand) {
-            ui.getManual();
-        } else if (this.command == CommandType.addTodo) {
-            ToDo.addToDo(this.processedInput);
-        } else if (this.command == CommandType.addDeadline) {
-            Deadline.addDeadline(this.processedInput);
-        } else if (this.command == CommandType.addEvent) {
-            Event.addEvent(processedInput);
-        } else if (this.command == CommandType.deleteCommand) {
-            Task.deleteTask(processedInput);
-        } else if (this.command == CommandType.doneCommand) {
-            Task.doneTask(processedInput);
-        } else if (this.command == CommandType.findCommand) {
-            Task.findTask(processedInput);
-        } else if (this.command == CommandType.invalidInput) {
-            ui.getConfused();
+        switch (this.command){
+            case LIST:
+                ui.getList();
+                break;
+            case EXIT:
+                this.exit = true;
+                ui.goodbye();
+                break;
+            case HELP:
+                ui.getManual();
+                break;
+            case TODO:
+                ToDo.addToDo(this.processedInput);
+                break;
+            case DEADLINE:
+                Deadline.addDeadline(this.processedInput);
+                break;
+            case EVENT:
+                Event.addEvent(this.processedInput);
+                break;
+            case DELETE:
+                Task.deleteTask(this.processedInput);
+                break;
+            case DONE:
+                Task.doneTask(this.processedInput);
+                break;
+            case FIND:
+                Task.findTask(this.processedInput);
+                break;
+            case INVALID:
+                ui.getConfused();
+                break;
         }
     }
 

@@ -1,14 +1,14 @@
 import java.io.*;
+import java.text.ParseException;
 
 public class Memory{
-    public static void writeListToFile() {
+    public static void writeListToFile() throws IOException, NullPointerException{
+        File f = new File("data");
+        f.mkdir(); // create directory if it doesn't exist
+        File file = new File ("data/List.txt");
+        file.delete(); // deletes old file
+        FileWriter fw = new FileWriter("data/List.txt");
         try {
-            File f = new File("data");
-            f.mkdir(); // create directory if it doesn't exist
-            File file = new File ("data/List.txt");
-            file.delete(); // deletes old file
-            FileWriter fw = new FileWriter("data/List.txt");
-
             for (Task v : Task.itemList) {
                 String done = v.isDone ? "y" : "n";
                 if (v instanceof ToDo) {
@@ -21,11 +21,13 @@ public class Memory{
             }
             fw.close();
         } catch (IOException | NullPointerException e) {
-            System.out.println(e.getMessage() + ". File may not be saved properly.");
+            throw e;
+        } finally {
+            fw.close();
         }
     }
 
-    public static void readListFromFile(){
+    public static void readListFromFile() throws ParseException, DukeException {
         try {
             BufferedReader r = new BufferedReader(new FileReader("data/List.txt"));
             String line = r.readLine();

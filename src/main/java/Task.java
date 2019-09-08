@@ -68,7 +68,7 @@ public abstract class Task { // abstract?
             System.out.println("You have no tasks in your list.");
         } else {
             String keyword = input.substring(4).trim();
-            ArrayList<Task> queryList = new ArrayList<Task>(100);
+            ArrayList<Task> queryList = new ArrayList<>(100);
             for (Task v : itemList) {
                 if (v.description.contains(keyword)) queryList.add(v);
             }
@@ -79,7 +79,7 @@ public abstract class Task { // abstract?
         }
     }
 
-    public static void addFromFile(String line) {
+    public static void addFromFile(String line) throws ParseException, DukeException{
         try {
             switch(line.charAt(0)){
                 case ('T'):
@@ -95,10 +95,8 @@ public abstract class Task { // abstract?
                     throw new DukeException();
             }
             itemList.get(itemList.size() - 1).isDone = (line.charAt(2) == 'y');
-        } catch (ParseException e) {
-            System.out.println("There was an error in loading the file:\n" + e.getMessage());
-        } catch (DukeException e) {
-            System.out.println("Something went wrong when loading the file. File data may be corrupted.");
+        } catch (ParseException | DukeException e) {
+            throw e;
         }
     }
 }

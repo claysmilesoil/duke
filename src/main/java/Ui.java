@@ -5,8 +5,10 @@ public class Ui {
     private String line = "____________________________________________";
     private static Scanner inp = new Scanner(System.in);
     public Ui () {
-        // Greeting
-        // startup
+
+    }
+
+    public void welcome() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -25,16 +27,12 @@ public class Ui {
     }
 
     // Exceptions and invalid inputs
-    public void getReadFileException(ParseException e) {
-        System.out.println("There was an error in loading the file:\n" + e.getMessage());
-    }
-
-    public void getFileCorruptException() {
+    public void getFileCorruptMessage() {
         System.out.println("Something went wrong when loading the file. File data may be corrupted.");
     }
 
-    public void getSaveFileError(Exception e) {
-        System.out.println(e.getMessage() + ". File may not be saved properly.");
+    public void getErrorMessage(String added, Exception e) {
+        System.out.println(e.getMessage() + added);
     }
 
     public void getConfused() {
@@ -64,8 +62,6 @@ public class Ui {
             }
         }
     }
-
-    // public void todoDesEmpty() {System.out.println("Uh, the description of a todo cannot be empty.");}
 
     public void goodbye() {
         System.out.println("Bye, see you soon!");

@@ -2,25 +2,25 @@ public class Parser {
 
     public static Command parse(String fullCommand) {
         if (fullCommand.equals("list")) {
-            return new Command(Command.CommandType.listCommand);
+            return new Command(Command.CommandType.LIST);
         } else if (fullCommand.equals(("bye"))) {
-            return new Command(Command.CommandType.exitCommand);
+            return new Command(Command.CommandType.EXIT);
         } else if (fullCommand.equals("help")) {
-            return new Command(Command.CommandType.helpCommand);
+            return new Command(Command.CommandType.HELP);
         } else if (fullCommand.indexOf("todo") == 0) {
-            return new Command(Command.CommandType.addTodo, fullCommand);
+            return new Command(Command.CommandType.TODO, fullCommand);
         } else if (fullCommand.indexOf("deadline") == 0) {
-            return new Command(Command.CommandType.addDeadline, fullCommand);
+            return new Command(Command.CommandType.DEADLINE, fullCommand);
         } else if (fullCommand.indexOf("event") == 0) {
-            return new Command(Command.CommandType.addEvent, fullCommand);
+            return new Command(Command.CommandType.EVENT, fullCommand);
         } else if (fullCommand.indexOf("delete") == 0) {
-            return new Command(Command.CommandType.deleteCommand, fullCommand);
+            return new Command(Command.CommandType.DELETE, fullCommand);
         } else if (fullCommand.indexOf("done") == 0) {
-            return new Command(Command.CommandType.doneCommand, fullCommand);
+            return new Command(Command.CommandType.DONE, fullCommand);
         } else if (fullCommand.indexOf("find") == 0) {
-            return new Command(Command.CommandType.findCommand, fullCommand);
+            return new Command(Command.CommandType.FIND, fullCommand);
         } else {
-            return new Command(Command.CommandType.invalidInput);
+            return new Command(Command.CommandType.INVALID);
         }
     }
 }
