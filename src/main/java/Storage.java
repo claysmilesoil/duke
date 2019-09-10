@@ -1,7 +1,16 @@
 import java.io.*;
 import java.text.ParseException;
-
-public class Memory{
+/**
+ * Handles reading and writing to hard disk.
+ */
+public class Storage{
+    /**
+     * Writes the Task ArrayList to a .txt file in a fixed relative path.
+     * If a .txt file with the same name exists, deletes the old file and creates a new file to write to.
+     *
+     * @throws IOException thrown when the I/O operation has failed or is interrupted
+     * @throws NullPointerException thrown when attempting to access a null File object
+     */
     public static void writeListToFile() throws IOException, NullPointerException{
         File f = new File("data");
         f.mkdir(); // create directory if it doesn't exist
@@ -27,6 +36,14 @@ public class Memory{
         }
     }
 
+    /**
+     * Reads line by line from a .txt file in a fixed relative path to load an ArrayList of Task objects.
+     * If the .txt file does not exist, creates a new empty .txt file in that path.
+     * When an exception is thrown, the method terminates.
+     *
+     * @throws ParseException thrown when there is an error in parsing the file when constructing Task objects
+     * @throws DukeException thrown when the method does not recognize the data in the file
+     */
     public static void readListFromFile() throws ParseException, DukeException {
         try {
             BufferedReader r = new BufferedReader(new FileReader("data/List.txt"));

@@ -1,13 +1,24 @@
-import java.text.ParseException;
 import java.util.Scanner;
 
+/**
+ * Handles most of the UI, including reading user inputs and printing some messages.
+ */
 public class Ui {
+    /**
+     * The border for outputs.
+     */
     private String line = "____________________________________________";
+    /**
+     * Scanner object to read in user commands.
+     */
     private static Scanner inp = new Scanner(System.in);
-    public Ui () {
 
+    public Ui () {
     }
 
+    /**
+     * Prints to terminal a welcome message.
+     */
     public void welcome() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -18,28 +29,52 @@ public class Ui {
         System.out.println(line + "\nHello, I'm Duke!\nWhat can I do for you?\n" + line);
     }
 
+    /**
+     * Reads user input from terminal
+     * @return user input in String format
+     */
     public String readCommand() {
         return (inp.nextLine());
     }
 
+    /**
+     * Prints the border.
+     */
     public void getLine() {
         System.out.println(line);
     }
 
     // Exceptions and invalid inputs
+
+    /**
+     * Prints an error message saying the file data may be corrupted.
+     */
     public void getFileCorruptMessage() {
         System.out.println("Something went wrong when loading the file. File data may be corrupted.");
     }
 
+    /**
+     * Prints an error message.
+     *
+     * @param added additional information on the behaviour of the program when the exception is thrown
+     * @param e the message of the exception thrown
+     */
     public void getErrorMessage(String added, Exception e) {
         System.out.println(e.getMessage() + added);
     }
 
+    /**
+     * Prints an error message when the user input is not recognised.
+     */
     public void getConfused() {
         System.out.println("Uh, dunno what that means. Type \"help\" for the list of commands available.");
     }
 
     // normal operation
+
+    /**
+     * Prints the help page.
+     */
     public void getManual () {
         System.out.println("Here are the currently available commands:\n" +
                 "    1. todo [field]                 -- Add a todo task to the list\n" +
@@ -52,6 +87,9 @@ public class Ui {
                 "    7. bye                          -- Close the program. ");
     }
 
+    /**
+     * Prints all items in the current task list.
+     */
     public void getList() {
         if (Task.itemList.isEmpty()) {
             System.out.println("You have no tasks in your list.");
@@ -63,6 +101,9 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints goodbye message.
+     */
     public void goodbye() {
         System.out.println("Bye, see you soon!");
     }

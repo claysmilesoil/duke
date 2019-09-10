@@ -1,5 +1,14 @@
+/**
+ * Represents a parser that interprets user input into commands.
+ */
 public class Parser {
 
+    /**
+     * Interprets user input to return a command to execute.
+     *
+     * @param fullCommand the full user string input
+     * @return Command object corresponding to user input
+     */
     public static Command parse(String fullCommand) {
         if (fullCommand.equals("list")) {
             return new Command(Command.CommandType.LIST);
