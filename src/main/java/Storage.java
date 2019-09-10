@@ -18,7 +18,7 @@ public class Storage{
         file.delete(); // deletes old file
         FileWriter fw = new FileWriter("data/List.txt");
         try {
-            for (Task v : Task.itemList) {
+            for (Task v : TaskList.itemList) {
                 String done = v.isDone ? "y" : "n";
                 if (v instanceof ToDo) {
                     fw.write("T|" + done + "|" + ((ToDo) v).description + "\n");
@@ -49,7 +49,7 @@ public class Storage{
             BufferedReader r = new BufferedReader(new FileReader("data/List.txt"));
             String line = r.readLine();
             while (line != null) {
-                Task.addFromFile(line);
+                TaskList.addFromFile(line);
                 line = r.readLine();
             }
         } catch (IOException e) {

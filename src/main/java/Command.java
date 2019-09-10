@@ -73,13 +73,13 @@ public class Command {
                 Event.addEvent(this.processedInput);
                 break;
             case DELETE:
-                Task.deleteTask(this.processedInput);
+                TaskList.deleteTask(this.processedInput);
                 break;
             case DONE:
-                Task.doneTask(this.processedInput);
+                TaskList.doneTask(this.processedInput);
                 break;
             case FIND:
-                Task.findTask(this.processedInput);
+                TaskList.findTask(this.processedInput);
                 break;
             case INVALID:
                 ui.getConfused();

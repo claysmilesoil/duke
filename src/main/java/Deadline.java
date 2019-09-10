@@ -52,7 +52,7 @@ public class Deadline extends Task{
                     System.out.println("Uh, the description of a deadline cannot be empty.");
             } else {
                 try {
-                    Task.itemList.add(new Deadline(input.substring(9, dateIdx).trim(), input.substring(dateIdx + 4).trim()));
+                    TaskList.itemList.add(new Deadline(input.substring(9, dateIdx).trim(), input.substring(dateIdx + 4).trim()));
                     addTask();
                 } catch (ParseException e) {
                     System.out.println("Date and time format is invalid. (valid: dd/MM/yyyy HHmm)");

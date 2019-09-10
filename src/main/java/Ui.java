@@ -91,12 +91,12 @@ public class Ui {
      * Prints all items in the current task list.
      */
     public void getList() {
-        if (Task.itemList.isEmpty()) {
+        if (TaskList.itemList.isEmpty()) {
             System.out.println("You have no tasks in your list.");
         } else {
             System.out.println("Here are the tasks in your list:");
-            for (int i = 0; i < Task.itemList.size(); i++) {
-                System.out.println(i + 1 + ". " + Task.itemList.get(i));
+            for (int i = 0; i < TaskList.itemList.size(); i++) {
+                System.out.println(i + 1 + ". " + TaskList.itemList.get(i));
             }
         }
     }

@@ -54,7 +54,7 @@ public class Event extends Task {
             }
             else {
                 try {
-                    Task.itemList.add(new Event(input.substring(6, dateIdx).trim(), input.substring(dateIdx + 4).trim()));
+                    TaskList.itemList.add(new Event(input.substring(6, dateIdx).trim(), input.substring(dateIdx + 4).trim()));
                     addTask();
                 } catch (ParseException e) {
                     System.out.println("Date and time format is invalid. (valid: dd/MM/yyyy HHmm)");

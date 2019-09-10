@@ -30,7 +30,7 @@ public class ToDo extends Task{
             if (input.substring(4).isBlank()) {
                 System.out.println("Uh, the description of a todo cannot be empty.");
             } else {
-                itemList.add(new ToDo(input.substring(5).trim()));
+                TaskList.itemList.add(new ToDo(input.substring(5).trim()));
                 addTask();
             }
     }

@@ -11,7 +11,7 @@ public class Duke {
      * Instantiates Duke. Loads task list from file.
      * Prints a message if unsuccessful in loading task list.
      */
-    private Duke() {
+    public Duke() {
         ui = new Ui();
         try {
             Storage.readListFromFile();
